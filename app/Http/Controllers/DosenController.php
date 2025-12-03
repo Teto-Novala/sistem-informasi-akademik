@@ -56,7 +56,7 @@ class DosenController extends Controller
     public function edit(Dosen $dosen)
     {
         return Inertia::render('Dosen/Edit', [
-            'dosen' => $dosen
+            'dataApi' => $dosen
         ]);
     }
 
@@ -67,7 +67,7 @@ class DosenController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'nip' => 'required',
+            'nidn' => 'required',
             'no_hp' => 'required'
         ]);
 
