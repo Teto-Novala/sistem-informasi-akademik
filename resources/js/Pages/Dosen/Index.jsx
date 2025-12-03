@@ -31,8 +31,47 @@ export default function Index({ data }) {
 
     return (
         <div className="w-full">
-            <h1>Daftar Dosen</h1>
-            <Link href={"/dosen/create"}>Tambah Dosen</Link>
+            <div className="flex justify-between items-center mb-4">
+                <h1 className="text-2xl font-bold">Daftar Dosen</h1>
+
+                {/* Bagian Tombol Action */}
+                <div className="flex gap-2">
+                    {/* Tombol Excel */}
+                    <Button
+                        variant="outline"
+                        asChild
+                        className="bg-green-600 text-white hover:bg-green-700 hover:text-white"
+                    >
+                        <a
+                            href={route("dosen.export.excel")}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Excel
+                        </a>
+                    </Button>
+
+                    {/* Tombol PDF */}
+                    <Button
+                        variant="outline"
+                        asChild
+                        className="bg-red-600 text-white hover:bg-red-700 hover:text-white"
+                    >
+                        <a
+                            href={route("dosen.export.pdf")}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            PDF
+                        </a>
+                    </Button>
+
+                    {/* Tombol Tambah */}
+                    <Button asChild>
+                        <Link href={"/dosen/create"}>Tambah Dosen</Link>
+                    </Button>
+                </div>
+            </div>
             <Table>
                 <TableCaption>Daftar Dosen</TableCaption>
                 <TableHeader>

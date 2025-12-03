@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DosenExport;
 use App\Models\Dosen;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DosenController extends Controller
 {
@@ -86,5 +89,15 @@ class DosenController extends Controller
             'status'=>'success',
             'message'=>'berhasil menghapus dosen'
         ]);
+    }
+
+    public function exportExcel(){
+        return Excel::download(new DosenExport,'data-dosen.xlsx');
+    }
+
+    public function exportPDF(){
+        $dosen = Dosen::all();
+        $pdf = Pdf::loadView('dosen.pdf',compact('dosen'));
+        return $pdf->download('data-dosen.pdf');
     }
 }

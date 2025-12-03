@@ -19,6 +19,9 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('dosen/export/excel', [DosenController::class, 'exportExcel'])->name('dosen.export.excel');
+Route::get('dosen/export/pdf', [DosenController::class, 'exportPdf'])->name('dosen.export.pdf');
+
 Route::resource('dosen',DosenController::class);
 
 Route::middleware('auth')->group(function () {
