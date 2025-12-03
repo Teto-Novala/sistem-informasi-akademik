@@ -33,7 +33,7 @@ class DosenController extends Controller
     {
         $request->validate([
             'nama'=>'required',
-            'nip'=>'required|unique:dosen',
+            'nidn'=>'required|unique:dosen',
             'no_hp'=>'required',
         ]);
 
