@@ -29,6 +29,16 @@ export default function Index({ data }) {
         }
     };
 
+    const logoutHandler = async () => {
+        try {
+            await axios.post(route("logout"));
+
+            window.location.href = "/login";
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
     return (
         <div className="w-full">
             <div className="flex justify-between items-center mb-4">
@@ -70,6 +80,10 @@ export default function Index({ data }) {
                     <Button asChild>
                         <Link href={"/dosen/create"}>Tambah Dosen</Link>
                     </Button>
+                    <Button asChild>
+                        <Link href={"/dashboard"}>Kembali</Link>
+                    </Button>
+                    <Button onClick={logoutHandler}>Logout</Button>
                 </div>
             </div>
             <Table>
