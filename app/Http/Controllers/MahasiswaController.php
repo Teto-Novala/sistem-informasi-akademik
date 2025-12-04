@@ -87,7 +87,7 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
         return response()->json([
             'status'=>'success',
-            'message'=>'berhasil menghapus dosen'
+            'message'=>'berhasil menghapus mahasiswa'
         ]);
     }
 

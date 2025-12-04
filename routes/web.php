@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::get('mahasiswa/export/excel', [MahasiswaController::class, 'exportExcel'])->name('mahasiswa.export.excel');
     Route::get('mahasiswa/export/pdf', [MahasiswaController::class, 'exportPdf'])->name('mahasiswa.export.pdf');
     Route::resource('mahasiswa',MahasiswaController::class);
-
+    
+    Route::get('matakuliah/export/excel', [MataKuliahController::class, 'exportExcel'])->name('matakuliah.export.excel');
+    Route::get('matakuliah/export/pdf', [MataKuliahController::class, 'exportPdf'])->name('matakuliah.export.pdf');
+    Route::resource('matakuliah',MataKuliahController::class);
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

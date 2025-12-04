@@ -15,7 +15,9 @@ export default function Index({ data }) {
     const [dataApi, setDataApi] = useState(data || []);
     const deleteIdHandler = async (id) => {
         try {
-            const response = await axios.delete(route("mahasiswa.destroy", id));
+            const response = await axios.delete(
+                route("matakuliah.destroy", id)
+            );
 
             alert(response.data.message);
 
@@ -37,7 +39,7 @@ export default function Index({ data }) {
     };
     return (
         <div className="w-full">
-            <h1>Daftar Mahasiswa</h1>
+            <h1>Daftar Mata Kuliah</h1>
             <div className="flex gap-2">
                 {/* Tombol Excel */}
                 <Button
@@ -46,7 +48,7 @@ export default function Index({ data }) {
                     className="bg-green-600 text-white hover:bg-green-700 hover:text-white"
                 >
                     <a
-                        href={route("mahasiswa.export.excel")}
+                        href={route("matakuliah.export.excel")}
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -61,7 +63,7 @@ export default function Index({ data }) {
                     className="bg-red-600 text-white hover:bg-red-700 hover:text-white"
                 >
                     <a
-                        href={route("mahasiswa.export.pdf")}
+                        href={route("matakuliah.export.pdf")}
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -71,7 +73,7 @@ export default function Index({ data }) {
 
                 {/* Tombol Tambah */}
                 <Button asChild>
-                    <Link href={"/mahasiswa/create"}>Tambah Mahasiswa</Link>
+                    <Link href={"/matakuliah/create"}>Tambah Mata Kuliah</Link>
                 </Button>
                 <Button asChild>
                     <Link href={"/dashboard"}>Kembali</Link>
@@ -79,12 +81,12 @@ export default function Index({ data }) {
                 <Button onClick={logoutHandler}>Logout</Button>
             </div>
             <Table>
-                <TableCaption>Daftar Mahasiswa</TableCaption>
+                <TableCaption>Daftar Mata Kuliah</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>NIM</TableHead>
+                        <TableHead>KODE MATA KULIAH</TableHead>
                         <TableHead>NAMA</TableHead>
-                        <TableHead>JURUSAN</TableHead>
+                        <TableHead>SKS</TableHead>
                         <TableHead>AKSI</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -92,13 +94,13 @@ export default function Index({ data }) {
                     {dataApi.map((item, index) => {
                         return (
                             <TableRow key={index}>
-                                <TableCell>{item.nim}</TableCell>
+                                <TableCell>{item.kode_mk}</TableCell>
                                 <TableCell>{item.nama}</TableCell>
-                                <TableCell>{item.jurusan}</TableCell>
+                                <TableCell>{item.sks}</TableCell>
                                 <TableCell className="flex gap-x-4">
                                     <Button asChild>
                                         <Link
-                                            href={`/mahasiswa/${item.id}/edit`}
+                                            href={`/matakuliah/${item.id}/edit`}
                                         >
                                             Ubah
                                         </Link>

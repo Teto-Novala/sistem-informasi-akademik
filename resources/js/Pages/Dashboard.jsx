@@ -15,7 +15,7 @@ export default function Dashboard() {
                     <Link href={route("mahasiswa.index")}>Mahasiswa</Link>
                 </Button>
                 <Button asChild>
-                    <Link href={"/dosen/index"}>Mata Kuliah</Link>
+                    <Link href={route("matakuliah.index")}>Mata Kuliah</Link>
                 </Button>
                 <Button asChild>
                     <Link href={"/dosen/index"}>Nilai</Link>
