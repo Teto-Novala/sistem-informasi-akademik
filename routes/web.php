@@ -3,6 +3,7 @@
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::get('matakuliah/export/excel', [MataKuliahController::class, 'exportExcel'])->name('matakuliah.export.excel');
     Route::get('matakuliah/export/pdf', [MataKuliahController::class, 'exportPdf'])->name('matakuliah.export.pdf');
     Route::resource('matakuliah',MataKuliahController::class);
+    
+    Route::get('nilai/export/excel', [NilaiController::class, 'exportExcel'])->name('nilai.export.excel');
+    Route::get('nilai/export/pdf', [NilaiController::class, 'exportPdf'])->name('nilai.export.pdf');
+    Route::resource('nilai',NilaiController::class);
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

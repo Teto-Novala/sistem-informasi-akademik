@@ -18,7 +18,7 @@ export default function Dashboard() {
                     <Link href={route("matakuliah.index")}>Mata Kuliah</Link>
                 </Button>
                 <Button asChild>
-                    <Link href={"/dosen/index"}>Nilai</Link>
+                    <Link href={route("nilai.index")}>Nilai</Link>
                 </Button>
             </div>
         </AuthenticatedLayout>
